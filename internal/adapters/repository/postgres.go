@@ -29,7 +29,6 @@ func NewPortPostgresRepository() *PortPostgresRepository {
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
 	if err != nil {
 		panic(err)
 	}

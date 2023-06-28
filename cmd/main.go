@@ -8,13 +8,17 @@ import (
 	"os"
 	"time"
 
+	_ "github.com/joho/godotenv/autoload"
+
 	"github.com/efumagal/sevenseas/internal/adapters/repository"
 	"github.com/efumagal/sevenseas/internal/core/domain"
 	"github.com/efumagal/sevenseas/internal/core/services"
+	"github.com/efumagal/sevenseas/utils"
 )
 
 var (
-	redisHost = "localhost:6379"
+	redisHost = utils.GetEnv("REDIS_ENDPOINT", "localhost:6379")
+	portFile  = utils.GetEnv("PORT_FILE", "../data/ports.json")
 	svc       *services.PortService
 )
 
@@ -53,6 +57,8 @@ func decodeStream(r io.Reader, svc *services.PortService) error {
 
 func main() {
 	log.Println("Starting")
+	log.Println("Redis host", redisHost)
+	log.Println("Port file", portFile)
 	start := time.Now()
 
 	repo := "redis"
@@ -66,25 +72,16 @@ func main() {
 		svc = services.NewPortService(store)
 	}
 
-	port := domain.Port{}
-	port.ID = "pippo"
-
-	err := svc.SavePort(port)
+	f, err := os.Open(portFile)
 	if err != nil {
-		log.Println(err)
-	}
-
-	fileName := "../ports.json"
-	f, err := os.Open(fileName)
-	if err != nil {
-		log.Fatalf("Error to read [file=%v]: %v", fileName, err.Error())
+		log.Fatalf("Error to read [file=%v]: %v", portFile, err.Error())
 	}
 	defer f.Close()
 
 	err = decodeStream(f, svc)
 
 	if err != nil {
-		log.Fatalf("Error to read [file=%v]: %v", fileName, err.Error())
+		log.Fatalf("Error decoding stream %v", err.Error())
 	}
 
 	log.Println("Finished")

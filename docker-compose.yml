@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  redis:
+    image: "redis/redis-stack:latest"
+    hostname: redis
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    expose:
+      - 8001
+  ports-management:
+    build:
+      context: ./
+    depends_on:
+      redis:
+        condition: service_started
+    container_name: ports-management
+    environment:
+      REDIS_ENDPOINT: redis:6379
+      PORT_FILE: data/ports.json
+    restart: on-failure

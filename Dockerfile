@@ -6,6 +6,7 @@ RUN go build -o ports-management ./cmd/main.go
 
 FROM alpine:latest AS runner
 WORKDIR /app
+COPY data ./data
 COPY --from=builder /app/ports-management .
 EXPOSE 8080
 ENTRYPOINT ["./ports-management"]
