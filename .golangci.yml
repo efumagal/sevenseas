@@ -8,5 +8,6 @@ linters:
   # - typecheck
   # - unused
   enable:
+    - errcheck
     - gofmt
     - forbidigo

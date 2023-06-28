@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"errors"
 	"fmt"
 
 	"github.com/efumagal/sevenseas/internal/core/domain"
@@ -30,10 +29,16 @@ func NewPortPostgresRepository() *PortPostgresRepository {
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&domain.Port{})
+
+	err = db.AutoMigrate(&domain.Port{})
+
+	if err != nil {
+		panic(err)
+	}
 
 	return &PortPostgresRepository{
 		db: db,
@@ -43,7 +48,7 @@ func NewPortPostgresRepository() *PortPostgresRepository {
 func (m *PortPostgresRepository) SavePort(port domain.Port) error {
 	req := m.db.Create(&port)
 	if req.RowsAffected == 0 {
-		return errors.New(fmt.Sprintf("port not saved: %v", req.Error))
+		return fmt.Errorf(fmt.Sprintf("port not saved: %v", req.Error))
 	}
 	return nil
 }
