@@ -1,0 +1,12 @@
+linters:
+  # defaults :
+  # - errcheck
+  # - gosimple
+  # - govet
+  # - ineffassign
+  # - staticcheck
+  # - typecheck
+  # - unused
+  enable:
+    - gofmt
+    - forbidigo
