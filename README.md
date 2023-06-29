@@ -15,7 +15,8 @@ docker compose down
 
 When completed access the Redis UI:
 
-[Redis Web UI](http://localhost:8001/redis-stack/browser)
+[Redis Web UI](http://localhost:8001/redis-stack/browser)  
+<img width="418" alt="Screenshot 2023-06-29 at 22 57 08" src="https://github.com/efumagal/sevenseas/assets/77152760/ab58a60d-5940-4936-b5cc-aac844e7439a">
 
 (Accept Terms the first time, could probably be avoided with some config passed to the Docker container)
 
