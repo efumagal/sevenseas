@@ -47,12 +47,16 @@ docker compose down
 - Add constructor with validation for `Model`
 - `Model.Coordinates` could be a specific struct with lat, lon and validation
 - Mock Redis and Postgres to be able to create tests
+- Add more tests and maybe a check on the coverage
+- Now the app that is injesting to the DB just start with the container, with more time an API (gRPC, REST) could have been added
+- Better naming and spend more time on the code structure to fit Hexagonal patterns
 
 ## Notes  
 * Generated a file with 100k random ports, that took ~30s to add to the DB.  
 In case of large files (although I think the data would probably be on another DB) 
 it might be worth investigating if it is possible to split the file and upload to the DB in parallel.  
-* Redis was chosen for simplicity but depending on the access patterns (maybe a query by Country) another DB might be more appropriate
+* Redis was chosen for simplicity but depending on the access patterns (maybe a query by Country) another DB might be more appropriate.
+* When tested with Redis the `SavePort` function was also updating if item already present
 ## Links
 
 - Redis mock [https://github.com/elliotchance/redismock](https://github.com/elliotchance/redismock)
