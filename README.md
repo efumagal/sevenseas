@@ -16,6 +16,7 @@ docker compose down
 When completed access the Redis UI:
 
 [Redis Web UI](http://localhost:8001/redis-stack/browser)  
+
 <img width="418" alt="Screenshot 2023-06-29 at 22 57 08" src="https://github.com/efumagal/sevenseas/assets/77152760/ab58a60d-5940-4936-b5cc-aac844e7439a">
 
 (Accept Terms the first time, could probably be avoided with some config passed to the Docker container)
@@ -45,13 +46,13 @@ docker compose down
 
 - Add constructor with validation for `Model`
 - `Model.Coordinates` could be a specific struct with lat, lon and validation
+- Mock Redis and Postgres to be able to create tests
 
 ## Notes  
 Generated a file with 100k random ports, that took ~30s to add to the db.  
 In case of large files (although I think the data would probably be on another DB) 
-it might work investigating splitting the file and upload to the db in parallel.
+it might be worth investigating splitting the file and upload to the db in parallel.
 
 ## Links
 
-- GORM Guides [https://gorm.io](https://gorm.io)
-- Gen Guides [https://gorm.io/gen/index.html](https://gorm.io/gen/index.html)
+- Redis mock [https://github.com/elliotchance/redismock](https://github.com/elliotchance/redismock)
