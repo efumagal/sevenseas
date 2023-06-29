@@ -36,7 +36,7 @@ func main() {
 		svc = services.NewPortService(store)
 	}
 
-	pfs := injector.NewPortFileService(svc)
+	pfs := injector.NewPortStreamService(svc)
 
 	f, err := os.Open(portFile)
 	if err != nil {
@@ -44,13 +44,12 @@ func main() {
 	}
 	defer f.Close()
 
-	err = pfs.InjectStream(f)
+	inserted, err := pfs.InjectStream(f)
 
 	if err != nil {
 		log.Printf("Error decoding stream %v", err.Error())
 	}
 
-	log.Println("Finished")
 	timeElapsed := time.Since(start)
-	log.Printf("Took %s", timeElapsed)
+	log.Printf("Added %d Took %s", inserted, timeElapsed)
 }

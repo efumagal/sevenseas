@@ -14,44 +14,49 @@ type PortWriter interface {
 	InjectStream(r io.Reader) error
 }
 
-type PortFileService struct {
+type PortStreamService struct {
 	svc *services.PortService
 }
 
-func NewPortFileService(svc *services.PortService) *PortFileService {
-	return &PortFileService{
+func NewPortStreamService(svc *services.PortService) *PortStreamService {
+	return &PortStreamService{
 		svc: svc,
 	}
 }
 
-func (pfs *PortFileService) InjectStream(r io.Reader) error {
+func (pfs *PortStreamService) InjectStream(r io.Reader) (int, error) {
+	inserted := 0
 	dec := json.NewDecoder(r)
 	t, err := dec.Token()
 	if err != nil {
-		return err
+		return inserted, err
 	}
 	if t != json.Delim('{') {
-		return fmt.Errorf("expected {, got %v", t)
+		return inserted, fmt.Errorf("expected {, got %v", t)
 	}
 	for dec.More() {
 		t, err := dec.Token()
 		if err != nil {
-			return err
+			return inserted, err
 		}
 		key := t.(string)
 
 		var value domain.Model
 		if err := dec.Decode(&value); err != nil {
-			return err
+			return inserted, err
 		}
 
 		port := domain.Port{Model: value, ID: key}
 
 		err = pfs.svc.SavePort(port)
+		// Could use sentinel errors or wrap error to return specific reason
+		// for failure and handle appropriately
 		if err != nil {
 			log.Println(err)
+		} else {
+			inserted++
 		}
 
 	}
-	return nil
+	return inserted, nil
 }

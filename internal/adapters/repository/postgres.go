@@ -9,6 +9,9 @@ import (
 	"gorm.io/gorm"
 )
 
+// This is not tested and only added to show multiple DBs can be supported
+// all adhering to the same interface
+
 type PortPostgresRepository struct {
 	db *gorm.DB
 }
