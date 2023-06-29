@@ -49,10 +49,10 @@ docker compose down
 - Mock Redis and Postgres to be able to create tests
 
 ## Notes  
-Generated a file with 100k random ports, that took ~30s to add to the db.  
+* Generated a file with 100k random ports, that took ~30s to add to the DB.  
 In case of large files (although I think the data would probably be on another DB) 
-it might be worth investigating splitting the file and upload to the db in parallel.
-
+it might be worth investigating if it is possible to split the file and upload to the DB in parallel.  
+* Redis was chosen for simplicity but depending on the access patterns (maybe a query by Country) another DB might be more appropriate
 ## Links
 
 - Redis mock [https://github.com/elliotchance/redismock](https://github.com/elliotchance/redismock)
