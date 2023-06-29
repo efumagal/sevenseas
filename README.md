@@ -13,9 +13,11 @@ docker compose up --build -d
 docker compose down
 ```
 
-When 
+When finished:
 
 [Redis Web UI](http://localhost:8001/redis-stack/browser)
+
+<img width="1471" alt="Screenshot 2023-06-29 at 20 17 41" src="https://github.com/efumagal/sevenseas/assets/77152760/962bcbb0-2f46-4017-ada8-c8f6807baf54">
 
 ## Develop
 
@@ -33,7 +35,10 @@ go run main.go
 
 ```shell
 docker compose down
+
 ```
+
+
 
 ## TO DOs
 
