@@ -36,6 +36,11 @@ To run:
 
 ```shell
 go run main.go
+
+2023/06/30 09:56:27 Starting
+2023/06/30 09:56:27 Redis host localhost:6379
+2023/06/30 09:56:27 Port file ../data/ports.json
+2023/06/30 09:56:27 Added 1632 Took 799.934125ms
 ```
 
 ```shell
