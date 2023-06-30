@@ -45,7 +45,6 @@ func main() {
 	defer f.Close()
 
 	inserted, err := pfs.InjectStream(f)
-
 	if err != nil {
 		log.Printf("Error decoding stream %v", err.Error())
 	}
