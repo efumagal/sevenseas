@@ -17,11 +17,12 @@ When completed access the Redis UI:
 
 [Redis Web UI](http://localhost:8001/redis-stack/browser)  
 
-<img width="418" alt="Screenshot 2023-06-29 at 22 57 08" src="https://github.com/efumagal/sevenseas/assets/77152760/ab58a60d-5940-4936-b5cc-aac844e7439a">
+<img width="618" alt="Screenshot 2023-06-29 at 22 57 08" src="https://github.com/efumagal/sevenseas/assets/77152760/54fb234c-f5d1-48b4-8e91-f396b421a0aa">
 
 (Accept Terms the first time, could probably be avoided with some config passed to the Docker container)
 
-<img width="800" alt="Redis Web UI" src="https://github.com/efumagal/sevenseas/assets/77152760/962bcbb0-2f46-4017-ada8-c8f6807baf54">
+<img width="800" alt="Screenshot 2023-06-29 at 20 17 41" src="https://github.com/efumagal/sevenseas/assets/77152760/545c01dd-4c9b-4c0c-bd6e-15f39a4c108c">
+
 
 ## Develop
 
@@ -35,6 +36,11 @@ To run:
 
 ```shell
 go run main.go
+
+2023/06/30 09:56:27 Starting
+2023/06/30 09:56:27 Redis host localhost:6379
+2023/06/30 09:56:27 Port file ../data/ports.json
+2023/06/30 09:56:27 Added 1632 Took 799.934125ms
 ```
 
 ```shell
