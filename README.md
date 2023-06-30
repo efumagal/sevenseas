@@ -39,7 +39,12 @@ go run main.go
 
 ```shell
 docker compose down
+```
 
+## Tests
+
+```shell
+go test ./...
 ```
 
 ## TO DOs
