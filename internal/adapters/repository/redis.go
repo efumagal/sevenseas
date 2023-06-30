@@ -26,7 +26,7 @@ func NewPortRedisRepository(host string) *PortRedisRepository {
 
 func (r *PortRedisRepository) SavePort(port domain.Port) error {
 	ctx := context.Background()
-	json, err := json.Marshal(port.Model)
+	json, err := json.Marshal(port.PortData)
 	if err != nil {
 		return err
 	}

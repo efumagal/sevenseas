@@ -41,12 +41,12 @@ func (pfs *PortStreamService) InjectStream(r io.Reader) (int, error) {
 		}
 		key := t.(string)
 
-		var value domain.Model
+		var value domain.PortData
 		if err := dec.Decode(&value); err != nil {
 			return inserted, err
 		}
 
-		port := domain.Port{Model: value, ID: key}
+		port := domain.Port{PortData: value, ID: key}
 
 		err = pfs.svc.SavePort(port)
 		// Could use sentinel errors or wrap error to return specific reason

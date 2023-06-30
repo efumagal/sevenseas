@@ -49,8 +49,8 @@ go test ./...
 
 ## TO DOs
 
-- Add constructor with validation for `Model`
-- `Model.Coordinates` could be a specific struct with lat, lon and validation
+- Add constructor with validation for `PortData`
+- `PortData.Coordinates` could be a specific struct with lat, lon and validation
 - Mock Redis and Postgres to be able to create tests
 - Add more tests and maybe a check on the coverage
 - Now the app that is injesting to the DB just start with the container, with more time an API (gRPC, REST) could have been added

@@ -5,17 +5,17 @@ import (
 )
 
 type PortMemoryRepository struct {
-	allPorts map[string]domain.Model
+	allPorts map[string]domain.PortData
 }
 
 func NewPortMemoryRepository() *PortMemoryRepository {
-	allPorts := make(map[string]domain.Model)
+	allPorts := make(map[string]domain.PortData)
 	return &PortMemoryRepository{
 		allPorts: allPorts,
 	}
 }
 
 func (r *PortMemoryRepository) SavePort(port domain.Port) error {
-	r.allPorts[port.ID] = port.Model
+	r.allPorts[port.ID] = port.PortData
 	return nil
 }

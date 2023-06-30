@@ -1,6 +1,6 @@
 package domain
 
-type Model struct {
+type PortData struct {
 	Name        string    `json:"name"`
 	City        string    `json:"city"`
 	Country     string    `json:"country"`
@@ -15,5 +15,5 @@ type Model struct {
 
 type Port struct {
 	ID string
-	Model
+	PortData
 }
