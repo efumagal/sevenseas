@@ -51,4 +51,13 @@ func main() {
 
 	timeElapsed := time.Since(start)
 	log.Printf("Added %d Took %s", inserted, timeElapsed)
+
+	id := "USUXZ"
+	retrievedPort, err := svc.GetPort(id)
+
+	if err != nil {
+		log.Printf("ID:%s City:%s", id, retrievedPort.City)
+	} else {
+		log.Printf("ID:%s not found", id)
+	}
 }
