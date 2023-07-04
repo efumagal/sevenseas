@@ -54,3 +54,8 @@ func (m *PortPostgresRepository) SavePort(port domain.Port) error {
 	}
 	return nil
 }
+
+// TODO: To be implemented
+func (r *PortPostgresRepository) GetPort(id string) (domain.PortData, error) {
+	return domain.PortData{}, nil
+}

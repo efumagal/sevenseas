@@ -18,3 +18,7 @@ func NewPortService(repo ports.PortRepository) *PortService {
 func (m *PortService) SavePort(port domain.Port) error {
 	return m.repo.SavePort(port)
 }
+
+func (m *PortService) GetPort(id string) (domain.PortData, error) {
+	return m.repo.GetPort(id)
+}

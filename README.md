@@ -60,7 +60,7 @@ go test ./...
 - Mock Redis and Postgres to be able to create tests
 - Add more tests and maybe a check on the coverage
 - Now the service that is injesting to the DB exits immediately, with more time an API (gRPC, REST) could have been added
-- Better naming and spend more time on the code structure to fit Hexagonal patterns
+- Better naming and spend more time on the code structure to fit with Hexagonal patterns
 
 ## Notes  
 * Generated a file with 100k random ports, that took ~30s to add to the DB.  
