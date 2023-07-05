@@ -53,7 +53,14 @@ docker compose down
 go test ./...
 ```
 
-At the moment there are only
+At the moment there are only few tests for demonstration.  
+Coverage can be checked with:  
+
+```shell
+go test ./... -cover
+```
+
+In a real repo there may be a check on minimum coverage.
 
 Unit tests:  
 - [Domain](internal/core/domain/model_test.go) 
@@ -62,6 +69,9 @@ Unit tests:
  
 Functional test (sort of):  
 - [Injector](internal/adapters/injector/memory_test.go)  
+
+Apart from the tests in the repo there will be end to end tests involving real external resources (DBs, third party services...).  
+
 ## TO DOs
 
 - Add constructor with validation for `PortData`
