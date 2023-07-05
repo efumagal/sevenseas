@@ -45,8 +45,10 @@ func TestNewPort(t *testing.T) {
 		{
 			test: "Valid",
 			id:   "AEAJM",
-			portData: PortData{City: "Ajman", Coordinates: []float64{55.5136433,
-				25.4052165}},
+			portData: PortData{City: "Ajman", Coordinates: []float64{
+				55.5136433,
+				25.4052165,
+			}},
 			expectedError: nil,
 			additionalChecks: func(t *testing.T, port Port) {
 				assert.Equal(t, "AEAJM", port.ID)
@@ -58,8 +60,10 @@ func TestNewPort(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
+		tc := tc
 		// Run Tests
 		t.Run(tc.test, func(t *testing.T) {
+			t.Parallel()
 			// Create a new port
 			port, err := NewPort(tc.id, tc.portData)
 			// Check if the error matches the expected error
