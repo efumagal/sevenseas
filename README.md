@@ -53,6 +53,15 @@ docker compose down
 go test ./...
 ```
 
+At the moment there are only
+
+Unit tests:  
+[Domain](internal/core/domain/model_test.go) 
+[Utils](utils/utils_test.go)
+[Memory Repo](internal/adapters/repository/memory_test.go)  
+ 
+Functional test:  
+[Injector](internal/adapters/injector/memory_test.go)  
 ## TO DOs
 
 - Add constructor with validation for `PortData`
