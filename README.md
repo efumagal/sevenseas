@@ -3,6 +3,9 @@
 [![golangci-lint](https://github.com/efumagal/sevenseas/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/efumagal/sevenseas/actions/workflows/golangci-lint.yml)
 [![test](https://github.com/efumagal/sevenseas/actions/workflows/test.yml/badge.svg)](https://github.com/efumagal/sevenseas/actions/workflows/test.yml)
 
+## PlantUML
+![uml](https://github.com/efumagal/sevenseas/assets/77152760/30c67497-f312-4b30-8631-f062fa4469c6)
+
 ## Run
 
 ```shell
