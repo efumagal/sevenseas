@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"syscall"
 	"time"
 
 	_ "github.com/joho/godotenv/autoload"
@@ -18,6 +19,20 @@ var (
 	portFile  = utils.GetEnv("PORT_FILE", "../data/ports.json")
 	svc       *services.PortService
 )
+
+func handler(signal os.Signal) {
+	if signal == syscall.SIGTERM {
+		log.Println("Got kill signal. ")
+		log.Println("Program will terminate now.")
+		os.Exit(0)
+	} else if signal == syscall.SIGINT {
+		log.Println("Got CTRL+C signal")
+		log.Println("Closing.")
+		os.Exit(0)
+	} else {
+		log.Println("Ignoring signal: ", signal)
+	}
+}
 
 func main() {
 	log.Println("Starting")
